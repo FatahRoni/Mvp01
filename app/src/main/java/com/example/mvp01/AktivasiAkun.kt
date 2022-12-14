@@ -1,5 +1,6 @@
 package com.example.mvp01
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -45,7 +46,20 @@ class AktivasiAkun : AppCompatActivity(), MainPresenter, Notifikasi{
     }
 
     override fun gagal(pesan: String) {
-        AlertDialog.Builder(this).setMessage(pesan).create().show()
+        AlertDialog.Builder(this)
+            .setMessage(pesan)
+            .setPositiveButton("Ok", this::dialogClickListener)
+            .setNegativeButton("Cancel", this::dialogClickListener)
+            .create()
+            .show()
+    }
+
+    private fun dialogClickListener(dialogInterface: DialogInterface, button: Int) {
+        when (button) {
+            DialogInterface.BUTTON_NEGATIVE -> {}
+            DialogInterface.BUTTON_POSITIVE -> {}
+            DialogInterface.BUTTON_NEUTRAL -> {}
+        }
     }
 
     private fun tombolSelanjutnya() {
